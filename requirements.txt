@@ -1,0 +1,4 @@
+counterfit
+counterfit_shims_grove
+counterfit-shims-serial
+pynmea2
