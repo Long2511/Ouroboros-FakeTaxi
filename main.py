@@ -23,7 +23,7 @@ def run_flask():
     app.run(host='0.0.0.0')
 
 Thread(target=run_flask).start()
-
+ 
 def print_gps_data(line):
     print(line.rstrip())
 
