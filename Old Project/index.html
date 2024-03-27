@@ -23,14 +23,41 @@ fetch('http://localhost:3000/mapskey')
     .then(response => response.json())
     .then(data => {
         var map = new atlas.Map('myMap', {
-            center: [106.660172, 10.762622],
+            center: [10.81586, 106.73341],
             zoom: 12,
-            authOptions: {
-                authType: 'subscriptionKey',
-                subscriptionKey: data.key
-            }
-        });
+                    authOptions: {
+                        authType: 'subscriptionKey',
+                        subscriptionKey: data.key
+                    },
+                    showLogo: false,
+                    style: 'grayscale_dark'
+                });
 
+                // Add zoom control
+                map.controls.add(new atlas.control.ZoomControl(), {
+                    position: 'top-right'
+                });
+
+                // Add pitch control
+                map.controls.add(new atlas.control.PitchControl(), {
+                    position: 'top-right'
+                });
+
+                // Add compass control
+                map.controls.add(new atlas.control.CompassControl(), {
+                    position: 'top-right'
+                });
+
+                // Add scale bar control
+                map.controls.add(new atlas.control.ScaleBarControl(), {
+                    position: 'bottom-left'
+                });
+
+                // Add search box control
+                var searchBox = new atlas.control.SearchBoxControl();
+                map.controls.add(searchBox, {
+                    position: 'top-left'
+                });
         console.log(data.key);
 
         var marker = new atlas.HtmlMarker({
