@@ -8,8 +8,7 @@
       "eventHubName": "samples-workitems",
       "connection": "IOT_HUB_CONNECTION_STRING",
       "cardinality": "many",
-      "consumerGroup": "$Default",
-      "dataType": "binary"
+      "consumerGroup": "$Default"
     }
   ]
 }

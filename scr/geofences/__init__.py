@@ -6,10 +6,10 @@ import json
 import os
 import requests
 
-
 def main(events: List[func.EventHubEvent]):
     maps_key = os.environ['MAPS_KEY']
     geofence_udid = os.environ['GEOFENCE_UDID']
+    print('the event is: %s', events[0].get_body().decode('utf-8'))
 
     for event in events:
         event_body = json.loads(event.get_body().decode('utf-8'))
@@ -22,9 +22,9 @@ def main(events: List[func.EventHubEvent]):
             'api-version': 1.0,
             'deviceId': 'gps-sensor',
             'subscription-key': maps_key,
-            'udid': geofence_udid,
-            'lat': lat,
-            'lon': lon
+            'udid' : geofence_udid,
+            'lat' : lat,
+            'lon' : lon
         }
 
         response = requests.get(url, params=params)
