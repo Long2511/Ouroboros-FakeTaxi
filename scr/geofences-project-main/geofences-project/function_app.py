@@ -1,5 +1,4 @@
 import azure.functions as func
-import datetime
 import json
 import logging
 import os
@@ -11,7 +10,7 @@ app = func.FunctionApp()
 maps_key = os.environ['MAPS_KEY']
 geofence_udid = os.environ['GEOFENCE_UDID']
 
-@app.event_hub_message_trigger(arg_name="azeventhub", event_hub_name="eventhubname",
+@app.event_hub_message_trigger(arg_name="azeventhub", event_hub_name="ouroboros-iot",
                                connection="IOT_HUB_CONNECTION_STRING") 
 def geofences(azeventhub: func.EventHubEvent):
     event_data = json.loads(azeventhub.get_body().decode('utf-8'))
@@ -37,13 +36,13 @@ def geofences(azeventhub: func.EventHubEvent):
     logging.info('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 
     if distance == 999:
-        logging.info('Point is outside geofence')
+        logging.info('User is outside geofence')
     elif distance > 0:
-        logging.info(f'Point is just outside geofence by a distance of {distance}m')
+        logging.info(f'User is just outside geofence by a distance of {distance}m')
     elif distance == -999:
-        logging.info(f'Point is inside geofence')
+        logging.info(f'User is inside geofence')
     else:
-        logging.info(f'Point is just inside geofence by a distance of {distance}m')
+        logging.info(f'User is just inside geofence by a distance of {distance}m')
     logging.info('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 
 
