@@ -6,13 +6,13 @@ import requests
 
 app = func.FunctionApp()
 
-
 maps_key = os.environ['MAPS_KEY']
 geofence_udid = os.environ['GEOFENCE_UDID']
 
-@app.event_hub_message_trigger(arg_name="azeventhub", event_hub_name="ouroboros-iot",
+
+@app.event_hub_message_trigger(arg_name="azeventhub", event_hub_name="eventhubname",
                                connection="IOT_HUB_CONNECTION_STRING") 
-def geofences(azeventhub: func.EventHubEvent):
+def gps_trigger(azeventhub: func.EventHubEvent):
     event_data = json.loads(azeventhub.get_body().decode('utf-8'))
 
     lat = event_data['gps']['lat']
@@ -31,6 +31,8 @@ def geofences(azeventhub: func.EventHubEvent):
 
     response = requests.get(url, params=params)
     response_body = json.loads(response.text)
+
+    logging.info(response_body)
 
     distance = response_body['geometries'][0]['distance']
     logging.info('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')

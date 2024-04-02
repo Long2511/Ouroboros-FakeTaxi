@@ -11,7 +11,7 @@ from azure.iot.device import IoTHubDeviceClient, Message
 CounterFitConnection.init('127.0.0.1', 5000)
 serial = counterfit_shims_serial.Serial('/dev/ttyAMA0')
 
-CONNECTION_STRING = "HostName=Oroboros.azure-devices.net;DeviceId=virtual-gps-device;SharedAccessKey=iqwrIzkhn2onCEgEYFak/s+IMnSscR9W1AIoTKiACFw="
+CONNECTION_STRING = "HostName=iot-hub-sos.azure-devices.net;DeviceId=gps-sensor;SharedAccessKey=q+T3BGVTnLNG2W3AMzT5IK4SEIKR6hsP6AIoTIYul+s="
 client = IoTHubDeviceClient.create_from_connection_string(CONNECTION_STRING)
 
 def gps():
