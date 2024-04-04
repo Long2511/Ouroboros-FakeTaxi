@@ -40,11 +40,11 @@ def gps_trigger(azeventhub: func.EventHubEvent):
     if distance == 999:
         logging.info('User is outside geofence')
     elif distance > 0:
-        logging.info(f'User is just outside geofence by a distance of {distance}m')
+        logging.warn(f'User is just outside geofence by a distance of {distance}m')
     elif distance == -999:
-        logging.info(f'User is inside geofence')
+        logging.warn(f'User is inside geofence')
     else:
-        logging.info(f'User is just inside geofence by a distance of {distance}m')
+        logging.warn(f'User is just inside geofence by a distance of {distance}m')
     logging.info('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 
 
