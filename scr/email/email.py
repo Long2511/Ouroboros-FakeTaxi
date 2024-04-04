@@ -6,7 +6,7 @@ from email.mime.multipart import MIMEMultipart
 smtp_server = 'smtp.gmail.com'
 smtp_port = 587
 username = 'phanbaovn2003@gmail.com'
-password = 'ldyfaruqafvoriar'
+password = 'password'
 
 sender_email = username
 receiver_email = '10421125@student.vgu.edu.vn'
